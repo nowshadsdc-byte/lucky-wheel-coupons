@@ -11,6 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpinRouteImport } from './routes/spin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminProtectedRouteImport } from './routes/admin._protected'
+import { Route as AdminProtectedIndexRouteImport } from './routes/admin._protected.index'
+import { Route as AdminProtectedWinnersRouteImport } from './routes/admin._protected.winners'
+import { Route as AdminProtectedUsersRouteImport } from './routes/admin._protected.users'
+import { Route as AdminProtectedRewardsRouteImport } from './routes/admin._protected.rewards'
 
 const SpinRoute = SpinRouteImport.update({
   id: '/spin',
@@ -22,31 +28,104 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProtectedRoute = AdminProtectedRouteImport.update({
+  id: '/admin/_protected',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedWinnersRoute = AdminProtectedWinnersRouteImport.update({
+  id: '/winners',
+  path: '/winners',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedUsersRoute = AdminProtectedUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedRewardsRoute = AdminProtectedRewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/spin': typeof SpinRoute
+  '/admin': typeof AdminProtectedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/rewards': typeof AdminProtectedRewardsRoute
+  '/admin/users': typeof AdminProtectedUsersRoute
+  '/admin/winners': typeof AdminProtectedWinnersRoute
+  '/admin/': typeof AdminProtectedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/spin': typeof SpinRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/rewards': typeof AdminProtectedRewardsRoute
+  '/admin/users': typeof AdminProtectedUsersRoute
+  '/admin/winners': typeof AdminProtectedWinnersRoute
+  '/admin': typeof AdminProtectedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/spin': typeof SpinRoute
+  '/admin/_protected': typeof AdminProtectedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/_protected/rewards': typeof AdminProtectedRewardsRoute
+  '/admin/_protected/users': typeof AdminProtectedUsersRoute
+  '/admin/_protected/winners': typeof AdminProtectedWinnersRoute
+  '/admin/_protected/': typeof AdminProtectedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/spin'
+  fullPaths:
+    | '/'
+    | '/spin'
+    | '/admin'
+    | '/admin/login'
+    | '/admin/rewards'
+    | '/admin/users'
+    | '/admin/winners'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/spin'
-  id: '__root__' | '/' | '/spin'
+  to:
+    | '/'
+    | '/spin'
+    | '/admin/login'
+    | '/admin/rewards'
+    | '/admin/users'
+    | '/admin/winners'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/spin'
+    | '/admin/_protected'
+    | '/admin/login'
+    | '/admin/_protected/rewards'
+    | '/admin/_protected/users'
+    | '/admin/_protected/winners'
+    | '/admin/_protected/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SpinRoute: typeof SpinRoute
+  AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +144,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_protected': {
+      id: '/admin/_protected'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_protected/': {
+      id: '/admin/_protected/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminProtectedIndexRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/winners': {
+      id: '/admin/_protected/winners'
+      path: '/winners'
+      fullPath: '/admin/winners'
+      preLoaderRoute: typeof AdminProtectedWinnersRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/users': {
+      id: '/admin/_protected/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminProtectedUsersRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/rewards': {
+      id: '/admin/_protected/rewards'
+      path: '/rewards'
+      fullPath: '/admin/rewards'
+      preLoaderRoute: typeof AdminProtectedRewardsRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
   }
 }
+
+interface AdminProtectedRouteChildren {
+  AdminProtectedRewardsRoute: typeof AdminProtectedRewardsRoute
+  AdminProtectedUsersRoute: typeof AdminProtectedUsersRoute
+  AdminProtectedWinnersRoute: typeof AdminProtectedWinnersRoute
+  AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
+}
+
+const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
+  AdminProtectedRewardsRoute: AdminProtectedRewardsRoute,
+  AdminProtectedUsersRoute: AdminProtectedUsersRoute,
+  AdminProtectedWinnersRoute: AdminProtectedWinnersRoute,
+  AdminProtectedIndexRoute: AdminProtectedIndexRoute,
+}
+
+const AdminProtectedRouteWithChildren = AdminProtectedRoute._addFileChildren(
+  AdminProtectedRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SpinRoute: SpinRoute,
+  AdminProtectedRoute: AdminProtectedRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
