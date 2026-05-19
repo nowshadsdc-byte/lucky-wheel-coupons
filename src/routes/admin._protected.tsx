@@ -27,7 +27,7 @@ function AdminLayout() {
     { to: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
     { to: "/admin/users", label: "Users", icon: Users },
     { to: "/admin/rewards", label: "Rewards", icon: Settings },
-    { to: "/admin/winners", label: "Trophy" as any && "Winners", icon: Trophy },
+    { to: "/admin/winners", label: "Winners", icon: Trophy },
   ];
 
   return (
