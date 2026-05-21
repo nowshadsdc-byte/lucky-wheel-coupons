@@ -1,11 +1,9 @@
-version: "3.9"
-
 services:
   app:
     build: .
     ports:
-      - "8080:8080"
+      - "7080:7080"
     env_file:
       - .env
-    command: bun run preview --host 0.0.0.0 --port 8080
+    command: bun run preview --host 0.0.0.0 --port 7080
     restart: unless-stopped

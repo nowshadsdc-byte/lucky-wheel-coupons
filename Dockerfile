@@ -10,6 +10,8 @@ RUN bun install
 COPY . .
 RUN bun run build
 
-EXPOSE 8080
+EXPOSE 7080
 
-CMD ["bun", "run", "preview", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["bun", "run", "preview", "--host", "0.0.0.0", "--port", "7080"]
+
+
