@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+<<<<<<< HEAD
     "build": "vite build",
+=======
+    "build": "vite build && bun ./scripts/ensure-server-output.js",
+>>>>>>> master
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
