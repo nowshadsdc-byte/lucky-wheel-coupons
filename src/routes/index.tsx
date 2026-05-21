@@ -9,10 +9,7 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
-<<<<<<< HEAD
-=======
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
->>>>>>> master
 import { Sparkles, Gift, Trophy, Percent } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -34,13 +31,7 @@ const schema = z.object({
     .max(20)
     .regex(/^[+()\-\s\d]+$/, "Only digits, spaces and +()- are allowed"),
   address: z.string().trim().min(4, "Please enter your address").max(200),
-<<<<<<< HEAD
-  course_option_1: z.string().trim().min(2, "Required").max(80),
-  course_option_2: z.string().trim().min(2, "Required").max(80),
-  course_option_3: z.string().trim().min(2, "Required").max(80),
-=======
   course_option: z.string().trim().min(2, "Required").max(80),
->>>>>>> master
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -53,13 +44,7 @@ function LandingPage() {
       full_name: "",
       phone_number: "",
       address: "",
-<<<<<<< HEAD
-      course_option_1: "",
-      course_option_2: "",
-      course_option_3: "",
-=======
       course_option: "",
->>>>>>> master
     },
   });
 
@@ -117,11 +102,7 @@ function LandingPage() {
         <div className="max-w-xl mx-auto bg-card border rounded-2xl shadow-sm p-6 md:p-8">
           <h2 className="text-2xl font-bold uppercase">Register to Spin</h2>
           <p className="text-sm text-muted-foreground mt-1">
-<<<<<<< HEAD
-            Each phone number can register and spin once. Pick three course options you're interested in.
-=======
             Each phone number can register and spin once. Choose one course option.
->>>>>>> master
           </p>
           <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <Field label="Full Name" error={form.formState.errors.full_name?.message}>
@@ -133,19 +114,6 @@ function LandingPage() {
             <Field label="Address" error={form.formState.errors.address?.message}>
               <Textarea rows={2} placeholder="Street, city, country" {...form.register("address")} />
             </Field>
-<<<<<<< HEAD
-            <div className="grid sm:grid-cols-3 gap-3">
-              <Field label="Course Option 1" error={form.formState.errors.course_option_1?.message}>
-                <Input placeholder="e.g. Welding" {...form.register("course_option_1")} />
-              </Field>
-              <Field label="Course Option 2" error={form.formState.errors.course_option_2?.message}>
-                <Input placeholder="e.g. Web Dev" {...form.register("course_option_2")} />
-              </Field>
-              <Field label="Course Option 3" error={form.formState.errors.course_option_3?.message}>
-                <Input placeholder="e.g. Lab Tech" {...form.register("course_option_3")} />
-              </Field>
-            </div>
-=======
             <Field label="Course Option" error={form.formState.errors.course_option?.message}>
               <Select
                 value={form.watch("course_option")}
@@ -161,7 +129,6 @@ function LandingPage() {
                 </SelectContent>
               </Select>
             </Field>
->>>>>>> master
             <Button
               type="submit"
               size="lg"

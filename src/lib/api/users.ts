@@ -59,11 +59,7 @@ export function exportUsersCSV(): string {
   const users = listUsers();
   const headers = [
     "id","full_name","phone_number","address",
-<<<<<<< HEAD
-    "course_option_1","course_option_2","course_option_3",
-=======
     "course_option",
->>>>>>> master
     "has_spun","reward_won","coupon_code","claimed","created_at",
   ];
   const escape = (v: unknown) => {

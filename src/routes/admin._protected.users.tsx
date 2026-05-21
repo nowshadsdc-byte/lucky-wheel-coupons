@@ -87,11 +87,7 @@ function UsersPage() {
                   <tr key={u.id} className="border-t">
                     <td className="p-3 font-medium">{u.full_name}</td>
                     <td className="p-3 font-mono text-xs">{u.phone_number}</td>
-<<<<<<< HEAD
-                    <td className="p-3 text-xs text-muted-foreground">{[u.course_option_1, u.course_option_2, u.course_option_3].join(", ")}</td>
-=======
                     <td className="p-3 text-xs text-muted-foreground">{u.course_option}</td>
->>>>>>> master
                     <td className="p-3">
                       {r ? (
                         <span className="inline-flex items-center gap-1.5 text-xs font-semibold">

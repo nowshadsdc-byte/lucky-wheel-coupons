@@ -35,8 +35,6 @@ export function incrementWon(id: RewardKey) {
 export function resetRewardCounts() {
   store.setRewards(DEFAULT_REWARDS.map((r) => ({ ...r })));
 }
-<<<<<<< HEAD
-=======
 
 export function createReward(
   reward_name: string,
@@ -78,4 +76,3 @@ export function deleteReward(id: string): boolean {
   store.setRewards(filtered);
   return true;
 }
->>>>>>> master

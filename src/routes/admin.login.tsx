@@ -51,12 +51,6 @@ function AdminLoginPage() {
           <Button type="submit" className="w-full bg-brand-charcoal hover:bg-brand-charcoal/90 uppercase" disabled={loading}>
             Sign In
           </Button>
-<<<<<<< HEAD
-          <p className="text-xs text-muted-foreground text-center">
-            Default: <code>admin@sdc.local</code> / <code>admin123</code>
-          </p>
-=======
->>>>>>> master
         </form>
       </div>
     </main>

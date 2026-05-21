@@ -1,34 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-<<<<<<< HEAD
-import { listRewards, resetRewardCounts, setProbabilities, setRewardActive } from "../lib/api/rewards";
-=======
 import { listRewards, resetRewardCounts, setProbabilities, setRewardActive, createReward, updateReward, deleteReward } from "../lib/api/rewards";
->>>>>>> master
 import { resetAllSpins } from "../lib/api/users";
 import { Switch } from "../components/ui/switch";
 import { Slider } from "../components/ui/slider";
 import { Button } from "../components/ui/button";
-<<<<<<< HEAD
-import { AlertTriangle, RotateCcw } from "lucide-react";
-import type { RewardKey } from "../lib/types";
-=======
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog";
 import { AlertTriangle, RotateCcw, Plus, Trash2, Edit2 } from "lucide-react";
 import type { RewardKey, Reward } from "../lib/types";
->>>>>>> master
 
 export const Route = createFileRoute("/admin/_protected/rewards")({
   component: RewardsPage,
 });
 
-<<<<<<< HEAD
-function RewardsPage() {
-  const [rewards, setRewards] = useState(listRewards);
-=======
 const PRESET_COLORS = [
   "var(--brand-coral)",
   "var(--brand-orange)",
@@ -45,7 +32,6 @@ function RewardsPage() {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const [editingReward, setEditingReward] = useState<Reward | null>(null);
   const [formData, setFormData] = useState({ name: "", label: "", color: PRESET_COLORS[0], probability: 10, max_limit: 0 });
->>>>>>> master
 
   const updateActive = (id: RewardKey, v: boolean) => {
     setRewards(setRewardActive(id, v));
@@ -57,17 +43,11 @@ function RewardsPage() {
   };
 
   const saveProbs = () => {
-<<<<<<< HEAD
-    const probs = rewards.reduce((acc, r) => ({ ...acc, [r.id]: r.probability }), {} as Record<RewardKey, number>);
-=======
     const probs = rewards.reduce((acc, r) => ({ ...acc, [r.id]: r.probability }), {} as Record<string, number>);
->>>>>>> master
     setRewards(setProbabilities(probs));
     toast.success("Probabilities saved");
   };
 
-<<<<<<< HEAD
-=======
   const handleAddReward = () => {
     if (!formData.name.trim() || !formData.label.trim()) {
       toast.error("Please fill in reward name and label");
@@ -127,18 +107,10 @@ function RewardsPage() {
     });
   };
 
->>>>>>> master
   const totalWeight = rewards.reduce((s, r) => s + r.probability, 0) || 1;
 
   return (
     <div className="space-y-6">
-<<<<<<< HEAD
-      <div>
-        <h1 className="text-2xl font-bold uppercase">Rewards</h1>
-        <p className="text-sm text-muted-foreground">Toggle rewards, tune odds, and reset campaign state.</p>
-      </div>
-
-=======
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold uppercase">Rewards</h1>
@@ -290,15 +262,11 @@ function RewardsPage() {
         </DialogContent>
       </Dialog>
 
->>>>>>> master
       <div className="grid gap-4">
         {rewards.map((r) => {
           const pct = Math.round((r.probability / totalWeight) * 100);
           const isFree = r.id === "FREE";
-<<<<<<< HEAD
-=======
           const isCustom = r.id.startsWith("CUSTOM_");
->>>>>>> master
           const limitReached = r.max_limit > 0 && r.total_won >= r.max_limit;
           return (
             <div key={r.id} className="border rounded-xl bg-card p-5">
@@ -321,8 +289,6 @@ function RewardsPage() {
                 <div className="flex items-center gap-2 text-xs">
                   <span className="text-muted-foreground">{r.is_active ? "Active" : "Disabled"}</span>
                   <Switch checked={r.is_active} onCheckedChange={(v) => updateActive(r.id, v)} />
-<<<<<<< HEAD
-=======
                   {isCustom && (
                     <>
                       <Button
@@ -343,7 +309,6 @@ function RewardsPage() {
                       </Button>
                     </>
                   )}
->>>>>>> master
                 </div>
               </div>
               <div className="mt-4">
@@ -389,7 +354,4 @@ function RewardsPage() {
     </div>
   );
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
