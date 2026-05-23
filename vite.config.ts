@@ -12,4 +12,12 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    server: {
+      allowedHosts: ["offer.sdcbd.net"],
+    },
+    preview: {
+      allowedHosts: ["offer.sdcbd.net"],
+    },
+  },
 });
