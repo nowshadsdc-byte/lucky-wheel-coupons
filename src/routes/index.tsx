@@ -106,10 +106,10 @@ function LandingPage() {
           </p>
           <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <Field label="Full Name" error={form.formState.errors.full_name?.message}>
-              <Input placeholder="Jane Doe" {...form.register("full_name")} />
+              <Input placeholder="Nowshad" {...form.register("full_name")} />
             </Field>
             <Field label="Phone Number" error={form.formState.errors.phone_number?.message}>
-              <Input type="tel" placeholder="+1 555 123 4567" {...form.register("phone_number")} />
+              <Input type="tel" placeholder="+8801722131610" {...form.register("phone_number")} />
             </Field>
             <Field label="Address" error={form.formState.errors.address?.message}>
               <Textarea rows={2} placeholder="Street, city, country" {...form.register("address")} />
@@ -126,6 +126,7 @@ function LandingPage() {
                   <SelectItem value="Business & Marketing with AI">Business & Marketing with AI</SelectItem>
                   <SelectItem value="Web Development Course">Web Development Course</SelectItem>
                   <SelectItem value="AI Coding Course">AI Coding Course</SelectItem>
+                  <SelectItem value="Unreal Engine Online Training Courses">Unreal Engine Online Training Courses</SelectItem>
                 </SelectContent>
               </Select>
             </Field>
