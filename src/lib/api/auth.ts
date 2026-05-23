@@ -5,8 +5,6 @@ import { store } from "./store";
  * (`POST /api/admin/login` returning a JWT) without changing callers.
  *
  * Default credentials (CHANGE THESE):
- *   email:    admin@sdc.local
- *   password: admin123
  */
 export const ADMIN_EMAIL = "admin@sdc.local";
 const ADMIN_PASSWORD = "admin123";

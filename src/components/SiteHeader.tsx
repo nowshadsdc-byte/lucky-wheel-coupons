@@ -20,13 +20,13 @@ export function SiteHeader() {
           </div>
         </Link>
         <nav className="flex items-center gap-2 text-sm">
-          {isAdmin ? (
+          {/* {isAdmin ? (
             <Link to="/" className="text-muted-foreground hover:text-foreground">Back to site</Link>
           ) : (
             <Link to="/admin/login" className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1">
               <Sparkles className="size-3.5" /> Admin
             </Link>
-          )}
+          )} */}
         </nav>
       </div>
     </header>
