@@ -126,7 +126,7 @@ function LandingPage() {
                   <SelectItem value="Business & Marketing with AI">Business & Marketing with AI</SelectItem>
                   <SelectItem value="Web Development Course">Web Development Course</SelectItem>
                   <SelectItem value="AI Coding Course">AI Coding Course</SelectItem>
-                  <SelectItem value="Unreal Engine Online Training Courses">Unreal Engine Online Training Courses</SelectItem>
+                  {/* <SelectItem value="Unreal Engine Online Training Courses">Unreal Engine Online Training Courses</SelectItem> */}
                 </SelectContent>
               </Select>
             </Field>
